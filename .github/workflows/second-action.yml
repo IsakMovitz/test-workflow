@@ -1,7 +1,7 @@
 name: Second Workflow - Deploy
 on: push
 jobs: 
-  test-action:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Get code 
@@ -14,7 +14,8 @@ jobs:
         run: npm ci
       - name: Run tests
         run: npm test
-  deploy: 
+  deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Get code 
